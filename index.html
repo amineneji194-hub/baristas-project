@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- For a raster iOS home-screen icon, run `npm run icons` and point this at /apple-touch-icon.png -->
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#3B2417" />
+    <title>Baristas — Menu</title>
+    <meta
+      name="description"
+      content="Baristas digital menu — coffee first, everything else can wait. Scan, browse, enjoy."
+    />
+    <!-- Prevent a flash of the wrong theme: set the class before paint. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('baristas-theme');
+          var dark = stored ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

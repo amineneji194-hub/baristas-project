@@ -1,0 +1,19 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.*
+!.env.example
+
+# Generated raster assets (regenerate with `npm run icons` / `npm run qr`).
+# The committed SVG QR + table-tent are vector and fully print-ready.
+public/pwa-*.png
+public/apple-touch-icon.png
+qr-output/*.png

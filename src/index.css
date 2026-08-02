@@ -1,0 +1,107 @@
+/* Self-hosted fonts (fast, no external request to Google) */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/cairo/400.css';
+@import '@fontsource/cairo/600.css';
+@import '@fontsource/cairo/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   Brand color tokens. Values are "R G B" (space separated) so
+   Tailwind's <alpha-value> opacity modifiers work.
+   Edit these hexes (converted to RGB) to re-skin the whole app.
+   ────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --bg: 250 246 240; /* #FAF6F0 latte cream */
+    --surface: 255 255 255; /* #FFFFFF */
+    --foam: 235 223 207; /* #EBDFCF */
+    --ink: 42 30 22; /* #2A1E16 */
+    --muted: 122 104 90; /* #7A685A */
+    --primary: 59 36 23; /* #3B2417 espresso */
+    --accent: 198 139 89; /* #C68B59 caramel/gold */
+    --terracotta: 168 71 46; /* #A8472E */
+    --line: 230 220 208; /* hairline borders */
+  }
+
+  .dark {
+    --bg: 26 18 11; /* #1A120B dark roast */
+    --surface: 37 26 16; /* #251A10 */
+    --foam: 52 38 26; /* warm dark foam */
+    --ink: 240 230 216; /* #F0E6D8 cream */
+    --muted: 178 158 140;
+    --primary: 240 230 216; /* cream becomes the "primary" text on dark */
+    --accent: 214 165 107; /* #D6A56B */
+    --terracotta: 198 96 68;
+    --line: 60 45 32;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    /* Faint paper grain for warmth. */
+    background-image: theme('backgroundImage.grain');
+  }
+
+  /* Arabic gets the Cairo face + RTL handled at the root via [dir]. */
+  [dir='rtl'] {
+    @apply font-arabic;
+  }
+
+  /* Respect reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Visible focus ring for keyboard users (WCAG AA). */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-md;
+  }
+
+  /* Smooth offset for sticky-tab scroll-spy jumps. */
+  [data-scroll-anchor] {
+    scroll-margin-top: 7.5rem;
+  }
+}
+
+@layer components {
+  .skeleton {
+    @apply relative overflow-hidden bg-foam/60;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.25),
+      transparent
+    );
+  }
+}
+
+/* Hide scrollbar on the horizontal category tabs (still scrollable). */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
