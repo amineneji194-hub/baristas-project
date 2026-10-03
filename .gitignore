@@ -22,3 +22,6 @@ qr-output/*.png
 preview.html
 preview-assets/
 /*.png
+
+# Download bundle of the Clar de Lluna site
+clar-de-lluna/*.zip
