@@ -121,7 +121,7 @@ h1,h2,h3{text-wrap:balance}
 .fav .pr{color:var(--accent);font-weight:700;font-size:14px}
 
 /* tabs */
-.tabs{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .tabs-in{display:flex;gap:8px;overflow-x:auto;padding:11px 16px}
 .tab{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;font-weight:600;
@@ -145,6 +145,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* cards */
 main{padding:4px 16px 0}
+footer{padding-bottom:72px!important}
 .sect{padding-top:22px;scroll-margin-top:70px}
 .card{display:flex;gap:12px;width:100%;text-align:start;background:var(--surface);border:1px solid var(--line);
   border-radius:18px;padding:12px;margin-bottom:12px;box-shadow:0 3px 14px -8px rgb(var(--shadow)/.18)}
@@ -204,14 +205,14 @@ footer{padding:26px 20px 40px;text-align:center;color:var(--muted)}
   padding:14px;margin:0 4px 20px;text-align:start}
 .wifi .qr{width:82px;height:82px;border-radius:12px;background:#fff;padding:5px;flex:0 0 auto}
 .foot-t{font-family:'Fraunces',serif;font-style:italic;margin-top:16px}
-.demo{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;z-index:60;background:var(--primary);color:var(--bg);
+.demo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--primary);color:var(--bg);
   font-size:12px;font-weight:600;padding:8px 16px;border-radius:999px;white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis;box-shadow:0 8px 24px -8px rgb(var(--shadow)/.5);opacity:.94}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </style>
 
 <div class="wrap" id="app"></div>
-<div class="demo" id="demo">Démo · touchez un article, changez la langue</div>
+<div class="demo" id="demo">Maquette · articles et prix d’exemple</div>
 
 <script>
 const MENU = ${DATA};
@@ -446,7 +447,6 @@ const ov=document.createElement('div');ov.className='ov';ov.id='ov';ov.innerHTML
 document.body.appendChild(ov);
 ov.addEventListener('click',e=>{if(e.target===ov)closeItem();});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeItem();});
-setTimeout(()=>{const d=$('#demo');if(d)d.style.display='none';},6000);
 
 render();
 </script>`;
