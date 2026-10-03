@@ -255,7 +255,7 @@ export const menu: MenuData = {
     {
       id: 'latte-lluna',
       categoryId: 'cafes',
-      name: { en: 'Lluna Latte (signature)', fr: 'Latte Lluna (signature)', ar: 'لاتيه لونا (مميّز)' },
+      name: { en: 'Lluna Latte', fr: 'Latte Lluna', ar: 'لاتيه لونا' },
       description: {
         en: 'Our house latte with honey, a touch of orange blossom and cinnamon.',
         fr: 'Notre latte maison au miel, une touche de fleur d’oranger et cannelle.',
