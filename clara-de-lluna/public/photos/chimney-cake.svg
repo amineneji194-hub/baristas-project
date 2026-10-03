@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="800" height="800" role="img" aria-label="Chimney cake illustration">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="35%" r="75%">
+      <stop offset="0" stop-color="#2B3A60"/><stop offset="1" stop-color="#121A2E"/>
+    </radialGradient>
+    <linearGradient id="dough" x1="0" x2="1">
+      <stop offset="0" stop-color="#9A5A22"/><stop offset=".45" stop-color="#E0A04E"/><stop offset="1" stop-color="#8A4E1C"/>
+    </linearGradient>
+    <linearGradient id="inside" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#F6E3BF"/><stop offset="1" stop-color="#D9B27A"/>
+    </linearGradient>
+    <clipPath id="body"><path d="M118 112 L282 112 L262 352 L138 352 Z"/></clipPath>
+  </defs>
+  <rect width="400" height="400" fill="url(#sky)"/>
+  <!-- moon + stars -->
+  <path d="M332 46a34 34 0 1 0 18 60A28 28 0 0 1 332 46z" fill="#E0BD6E" opacity=".9"/>
+  <g fill="#EEE8DA"><circle cx="60" cy="60" r="2"/><circle cx="96" cy="34" r="1.4"/><circle cx="40" cy="140" r="1.6"/><circle cx="364" cy="170" r="1.5"/><circle cx="300" cy="30" r="1.2"/></g>
+  <!-- plate shadow -->
+  <ellipse cx="200" cy="356" rx="110" ry="16" fill="#000" opacity=".35"/>
+  <!-- body -->
+  <path d="M118 112 L282 112 L262 352 L138 352 Z" fill="url(#dough)"/>
+  <g clip-path="url(#body)" fill="none" stroke="#6E3A12" stroke-width="7" stroke-linecap="round" opacity=".55">
+    <path d="M100 140 Q200 120 300 100"/><path d="M100 176 Q200 156 300 136"/><path d="M100 212 Q200 192 300 172"/>
+    <path d="M100 248 Q200 228 300 208"/><path d="M100 284 Q200 264 300 244"/><path d="M100 320 Q200 300 300 280"/><path d="M100 356 Q200 336 300 316"/>
+  </g>
+  <!-- cinnamon sugar -->
+  <g clip-path="url(#body)" fill="#FBEBD0" opacity=".85">
+    <circle cx="150" cy="150" r="2.2"/><circle cx="190" cy="138" r="1.8"/><circle cx="236" cy="160" r="2.2"/><circle cx="168" cy="196" r="1.6"/>
+    <circle cx="214" cy="214" r="2.2"/><circle cx="250" cy="230" r="1.6"/><circle cx="160" cy="246" r="2"/><circle cx="200" cy="268" r="1.6"/>
+    <circle cx="232" cy="290" r="2.2"/><circle cx="170" cy="304" r="1.8"/><circle cx="210" cy="330" r="2"/><circle cx="148" cy="330" r="1.6"/>
+    <circle cx="258" cy="190" r="2"/><circle cx="140" cy="210" r="1.8"/><circle cx="222" cy="180" r="1.4"/><circle cx="186" cy="232" r="1.8"/>
+  </g>
+  <!-- top opening -->
+  <ellipse cx="200" cy="112" rx="82" ry="18" fill="#7A4318"/>
+  <ellipse cx="200" cy="114" rx="62" ry="12" fill="url(#inside)"/>
+  <ellipse cx="200" cy="116" rx="40" ry="7" fill="#C9935A" opacity=".6"/>
+  <!-- steam -->
+  <g fill="none" stroke="#EEE8DA" stroke-width="4" stroke-linecap="round" opacity=".5">
+    <path d="M180 88 q-10 -16 0 -32 q10 -16 0 -32"/><path d="M214 92 q-10 -14 0 -28 q10 -14 0 -28"/>
+  </g>
+</svg>

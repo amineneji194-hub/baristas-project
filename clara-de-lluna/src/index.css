@@ -1,0 +1,107 @@
+/* Self-hosted fonts (fast, no external request to Google) */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/cairo/400.css';
+@import '@fontsource/cairo/600.css';
+@import '@fontsource/cairo/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   Brand color tokens. Values are "R G B" (space separated) so
+   Tailwind's <alpha-value> opacity modifiers work.
+   Edit these hexes (converted to RGB) to re-skin the whole app.
+   ────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --bg: 247 243 236; /* #F7F3EC moonlit cream */
+    --surface: 255 255 255; /* #FFFFFF */
+    --foam: 236 228 214; /* #ECE4D6 */
+    --ink: 27 34 51; /* #1B2233 */
+    --muted: 104 109 128; /* #686D80 */
+    --primary: 31 42 68; /* #1F2A44 midnight blue */
+    --accent: 176 133 52; /* #B08534 moon gold (AA on cream) */
+    --terracotta: 180 83 58; /* #B4533A */
+    --line: 227 220 207; /* hairline borders */
+  }
+
+  .dark {
+    --bg: 13 18 33; /* #0D1221 night sky */
+    --surface: 22 29 50; /* #161D32 */
+    --foam: 34 43 70; /* #222B46 */
+    --ink: 238 232 218; /* #EEE8DA moonlight */
+    --muted: 160 166 186;
+    --primary: 238 232 218; /* moonlight becomes the "primary" text on dark */
+    --accent: 224 189 110; /* #E0BD6E */
+    --terracotta: 212 106 80;
+    --line: 42 51 82;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    /* Faint paper grain for warmth. */
+    background-image: theme('backgroundImage.grain');
+  }
+
+  /* Arabic gets the Cairo face + RTL handled at the root via [dir]. */
+  [dir='rtl'] {
+    @apply font-arabic;
+  }
+
+  /* Respect reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Visible focus ring for keyboard users (WCAG AA). */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-md;
+  }
+
+  /* Smooth offset for sticky-tab scroll-spy jumps. */
+  [data-scroll-anchor] {
+    scroll-margin-top: 7.5rem;
+  }
+}
+
+@layer components {
+  .skeleton {
+    @apply relative overflow-hidden bg-foam/60;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.25),
+      transparent
+    );
+  }
+}
+
+/* Hide scrollbar on the horizontal category tabs (still scrollable). */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

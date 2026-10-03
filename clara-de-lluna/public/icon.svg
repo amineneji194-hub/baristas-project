@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Maskable-safe: artwork kept within the central ~80% safe zone. -->
+  <rect width="512" height="512" fill="#1F2A44"/>
+  <path d="M296 120a144 144 0 1 0 76 258A118 118 0 0 1 296 120z" fill="#E0BD6E"/>
+  <circle cx="360" cy="150" r="10" fill="#EEE8DA"/>
+  <circle cx="390" cy="210" r="6" fill="#EEE8DA"/>
+</svg>
